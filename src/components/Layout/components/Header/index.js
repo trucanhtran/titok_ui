@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleQuestion,
   faCircleXmark,
-  faCloudUpload,
   faCoins,
   faEarthAsia,
   faEllipsisVertical,
@@ -25,6 +24,8 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
+import { MessageIcon, UploadIcon, InboxIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -68,6 +69,29 @@ function Header() {
     setTimeout(() => {
       setSearchResult([1, 2, 3]);
     }, 0);
+
+    const api_url = 'https://api.fpt.com.vn/';
+    const url_endpoint = 'FPTPSCENTER/api/v1/PSEmployee/SetId';
+    const headers = {
+      'x-api-key': 'SNfJWq8frpdQ6vNTPSUhD2nUCNOuKM85',
+      'apiKey': 'SNfJWq8frpdQ6vNTPSUhD2nUCNOuKM85',
+      'Content-Type': 'application/json',
+    };
+    const options = {
+      method: 'GET',
+      mode: 'cors',
+      headers,
+    };
+
+    const params = {
+      PSetId: '1c34b54c-e5e9-4a2e-9192-5a371db7f024',
+      HR_STATUS: 'A',
+      EMAIL_ADDR: 'anhttt21',
+    };
+    const responseLinkapi = fetch(api_url + url_endpoint + '?' + new URLSearchParams(params), options);
+    if (responseLinkapi.status === 200) {
+      console.log(responseLinkapi.json());
+    }
   }, []);
 
   const handleMenuChange = (menuItem) => {
@@ -113,7 +137,7 @@ function Header() {
           interactive
           visible={searchResult.length > 0}
           render={(attrs) => (
-            <div className={cx('search-result')} tabindex="-1" {...attrs}>
+            <div className={cx('search-result')} tabIndex="-1" {...attrs}>
               <PopperWrapper>
                 <h4 className={cx('search-title')}>Accounts</h4>
                 <AccountItem />
@@ -142,7 +166,18 @@ function Header() {
             <>
               <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
                 <button className={cx('action-btn')}>
-                  <FontAwesomeIcon icon={faCloudUpload} />
+                  <UploadIcon />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 200]} content="Message" placement="bottom">
+                <button className={cx('action-btn')}>
+                  <MessageIcon />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
+                <button className={cx('action-btn')}>
+                  <InboxIcon />
+                  <span className={cx('badge')}>12</span>
                 </button>
               </Tippy>
             </>
@@ -155,7 +190,7 @@ function Header() {
 
           <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
-              <img
+              <Image
                 className={cx('user-avatar')}
                 src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/f89b316574f8f0ab300e20d4b7ff6a29~c5_100x100.jpeg?x-expires=1665730800&x-signature=dHczJR7C6eF02vnKm4wXQMVFYG4%3D"
                 alt="Nguyen Van A"
