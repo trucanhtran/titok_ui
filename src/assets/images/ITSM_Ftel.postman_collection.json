@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "6bfcb14f-98f6-4141-b8e4-c3c95b9c72bf",
+		"name": "ITSM_Ftel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://api.fpt.com.vn/FPTPSCENTER/api/v1/PSEmployee/SetId?PSetId=1c34b54c-e5e9-4a2e-9192-5a371db7f024&HR_STATUS=A&EMAIL_ADDR=phongnc2@fpt.com.vn",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "SNfJWq8frpdQ6vNTPSUhD2nUCNOuKM85",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "apiKey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "SecretKey",
+						"value": "2001fdc3-d636-46cf-979b-7fd3ce158499",
+						"type": "text"
+					},
+					{
+						"key": "X-Consumer-Username",
+						"value": "100104113key8103",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://api.fpt.com.vn/FPTPSCENTER/api/v1/PSEmployee/SetId?PSetId=1c34b54c-e5e9-4a2e-9192-5a371db7f024&HR_STATUS=A&EMAIL_ADDR=phongnc2@fpt.com.vn",
+					"protocol": "https",
+					"host": [
+						"api",
+						"fpt",
+						"com",
+						"vn"
+					],
+					"path": [
+						"FPTPSCENTER",
+						"api",
+						"v1",
+						"PSEmployee",
+						"SetId"
+					],
+					"query": [
+						{
+							"key": "PSetId",
+							"value": "1c34b54c-e5e9-4a2e-9192-5a371db7f024"
+						},
+						{
+							"key": "HR_STATUS",
+							"value": "A"
+						},
+						{
+							"key": "EMAIL_ADDR",
+							"value": "phongnc2@fpt.com.vn"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
